@@ -1,0 +1,110 @@
+
+import random
+import mysql.connector
+
+
+#conn = mysql.connector.connect(
+ #  user='root', password='password', host='127.0.0.1', database='Ustraa_data')
+
+
+#cursor = conn.cursor()
+#Preparing SQL query to INSERT a record into the database.
+#insert_stmt = (
+  # "INSERT INTO Teams(Group A, Group B, Group C, Group D, Group E , Group G , Group H)"
+  # "VALUES (%s, %s, %s, %s, %s,%s,%s,%s)"
+#)
+
+#data = (w,f)
+#try:
+   
+   #cursor.execute(data)
+
+   
+   #conn.commit()
+
+#except:
+  
+  # conn.rollback()
+
+
+#conn.close()
+
+visited_teams = {
+    "Striking Sharpshooters": False,
+    "Blue Bombers": False,
+    "Blue Geckos": False,
+    "Midnight Miners": False,
+    "Alpha Blockers": False,
+    "Tornado Geckos": False,
+    "Muffin Racers": False,
+    "Black & White Gangstaz": False,
+    "Rhino Hurricanes": False,
+    "Midnight Stars": False,
+    "Rocky Assassins": False,
+    "Skull Fireballs": False,
+    "Spirit Blockers": False,
+    "Wind Kamikaze": False,
+    "Retro Chuckers": False,
+    "Venomous Cyborgs": False,
+    "Quicksilver Ninjas": False,
+    "Retro Heroes": False,
+    "Lions": False,
+    "Raging Spanners": False,
+    "Poison Spiders": False,
+    "Black Bullets": False,
+    "Thunder Commandos": False,
+    "Venomous Sharks": False,
+    "Killer Stars": False,
+    "Knockout Busters": False,
+    "Real Madrid": False,
+    "Demolition Piledrivers": False,
+    "Flying Xpress": False,
+    "Silver Wasps": False,
+    "The Showstoppers": False,
+    "Wolfsburg": False,
+}
+
+Qualifiers = ["Striking Sharpshooters","Blue Bombers","Blue Geckos",
+"Midnight Miners","Alpha Blockers","Tornado Geckos","Muffin Racers","Black & White Gangstaz"]
+
+j=64
+def all_not_visited(arr):
+    for i in arr:
+        if visited_teams[i] == True:
+           return False
+    return True
+
+
+teams = list(visited_teams.keys())
+
+for i in range (0,8):
+ flag_1 = True
+ flag_2 = True
+ while flag_1:
+    if not visited_teams[w := random.choices(Qualifiers)[0]]:
+           visited_teams[w] = True
+           flag_1 = False
+           while flag_2:
+                if all_not_visited(ff := random.sample(teams, k=3)):
+                    for i in ff:
+                        visited_teams[i] = True
+                    flag_2 = False
+                    j += 1
+                    alpha = chr(j)
+                    print("Group", alpha)
+                    print(*[w], *ff , sep="\n")
+                    with open("Text output.txt", "a") as f:
+                     print("Group", alpha ,file=f)
+                     print(w ,",",*ff,  file=f)
+
+     
+
+    
+
+    
+
+        
+
+ 
+     
+ 
